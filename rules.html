@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSRP - Official Rules</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #08080c;
+            --bg-card: #0f0f14;
+            --bg-elevated: #141419;
+            --accent: #ff6b00;
+            --accent-muted: #cc5600;
+            --text-primary: #f0f0f2;
+            --text-secondary: #888890;
+            --text-muted: #55555a;
+            --border: #1e1e26;
+            --border-light: #2a2a34;
+            --success: #00c48c;
+            --cop: #0088cc;
+            --warning: #ff9500;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.65;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-mark {
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--accent);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .logo-mark:hover {
+            transform: rotate(5deg) scale(1.05);
+            border-color: var(--accent);
+            cursor: default;
+        }
+
+        .logo-mark svg {
+            width: 36px;
+            height: 36px;
+            fill: var(--accent);
+        }
+
+        .brand {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            letter-spacing: 14px;
+            color: var(--text-primary);
+            line-height: 1;
+        }
+
+        .tagline {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        .strike-banner {
+            background: var(--accent);
+            border-radius: 8px;
+            padding: 20px 32px;
+            text-align: center;
+            margin-bottom: 40px;
+            transition: all 0.2s ease;
+        }
+
+        .strike-banner:hover {
+            transform: scale(1.01);
+            cursor: default;
+        }
+
+        .strike-banner h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 4px;
+            color: #fff;
+        }
+
+        .strike-banner p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.85);
+            font-weight: 500;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px 32px;
+            margin-bottom: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .section:hover {
+            border-color: var(--accent);
+            background: var(--bg-elevated);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 22px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .section-icon svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--accent);
+        }
+
+        .section-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: var(--text-primary);
+        }
+
+        .rule-list {
+            list-style: none;
+            display: grid;
+            gap: 3px;
+        }
+
+        .rule-list li {
+            padding: 12px 16px;
+            background: var(--bg-elevated);
+            border-radius: 6px;
+            border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            transition: border-color 0.15s ease;
+        }
+
+        .rule-list li:hover {
+            border-color: var(--border-light);
+        }
+
+        .rule-list li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .rule-list li span {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .category-item {
+            background: var(--bg-elevated);
+            padding: 16px 18px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .category-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .category-item {
+            cursor: pointer;
+        }
+
+        .category-item strong {
+            display: block;
+            color: var(--accent);
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            font-weight: 700;
+        }
+
+        .category-item span {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        .host-note {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 18px 22px;
+            margin-top: 18px;
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+
+        .host-note div {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .host-note strong {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .weapons-rules {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .two-cols {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .rule-list.compact li {
+            padding: 10px 14px;
+        }
+
+        .factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 8px;
+        }
+
+        .factors-grid.small {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .factors-grid.small .factor-item {
+            padding: 10px 12px;
+            font-size: 0.8rem;
+        }
+
+        .factors-grid.small .factor-item .status {
+            font-size: 0.65rem;
+        }
+
+        .factor-item {
+            background: var(--bg-elevated);
+            padding: 14px 16px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .factor-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .factor-item {
+            cursor: pointer;
+        }
+
+        .factor-item .name {
+            color: var(--text-secondary);
+        }
+
+        .factor-item .status {
+            color: var(--success);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            font-family: 'Space Mono', monospace;
+        }
+
+        .final-notice {
+            background: var(--bg-card);
+            border: 1px solid var(--accent-muted);
+            border-radius: 10px;
+            padding: 32px;
+            margin-top: 44px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .final-notice:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .final-notice h3 {
+            color: var(--accent);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 12px;
+        }
+
+        .final-notice p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.75;
+        }
+
+        .join-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 36px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .join-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .join-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .join-card {
+            cursor: pointer;
+        }
+
+        .join-card.civ {
+            border-color: rgba(0, 196, 140, 0.3);
+        }
+
+        .join-card.cop {
+            border-color: rgba(0, 136, 204, 0.3);
+        }
+
+        .join-card svg {
+            width: 36px;
+            height: 36px;
+            margin-bottom: 14px;
+        }
+
+        .join-card.civ svg {
+            fill: var(--success);
+        }
+
+        .join-card.cop svg {
+            fill: var(--cop);
+        }
+
+        .join-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+
+        .join-card.civ h4 {
+            color: var(--success);
+        }
+
+        .join-card.cop h4 {
+            color: var(--cop);
+        }
+
+        .join-card p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 40px 16px;
+            }
+            
+            .brand {
+                font-size: 2.5rem;
+                letter-spacing: 10px;
+            }
+            
+            .section {
+                padding: 22px;
+            }
+            
+            .join-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .host-note {
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            .two-cols {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="strike-banner">
+            <h2>2 Strike System</h2>
+            <p>2 Strikes = You're Out</p>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
+                </div>
+                <h2 class="section-title">General Rules</h2>
+            </div>
+            <ul class="rule-list">
+                <li>Text to speech must be <span>OFF</span></li>
+                <li>No radars - Only hosts may have maps on to prevent griefers and keep everyone in AOP</li>
+                <li>No VDM, RDM, or <span>Meta gaming</span></li>
+                <li>No <span>revenge RP</span></li>
+                <li>No <span>gang affiliation</span></li>
+                <li>No <span>combat rolling</span></li>
+                <li>No <span>forced scenes</span></li>
+                <li>No car/clothes switching unrealistically</li>
+                <li>Do not attach yourself to scenes</li>
+                <li>Don't come into party screaming</li>
+                <li>If you have a 911 call, type it in chat until someone responds</li>
+                <li>EMP launcher is the makeshift spike strip</li>
+            </ul>
+        </div>
+
+        <div class="two-cols">
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z"/></svg>
+                    </div>
+                    <h2 class="section-title">Clothes & Gear</h2>
+                </div>
+                <ul class="rule-list compact">
+                    <li>No <span>modded outfits</span></li>
+                    <li>No <span>BP helmets</span> or armor</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-2 .89-2 2v11c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+                    </div>
+                    <h2 class="section-title">Jobs</h2>
+                </div>
+                <ul class="rule-list compact">
+                    <li>No <span>bounty hunter</span> or <span>hitmen</span></li>
+                    <li>Tax paying jobs only</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <svg viewBox="0 0 24 24"><path d="M21 10.5c0 .83-.67 1.5-1.5 1.5H18V5h-3v2h-2V5H9v2H7V5H4v6.5c0 .83.67 1.5 1.5 1.5h15c.83 0 1.5-.67 1.5-1.5V10.5zM7.5 16c-.83 0-1.5-.67-1.5-1.5S6.67 13 7.5 13s1.5.67 1.5 1.5S8.33 16 7.5 16zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                </div>
+                <h2 class="section-title">Weapons</h2>
+            </div>
+            <div class="category-grid">
+                <div class="category-item">
+                    <strong>Prohibited</strong>
+                    AP Pistol, Marksman, Perico, Navy Revolver, Heavy Revolver, Alien
+                </div>
+                <div class="category-item">
+                    <strong>Melees</strong>
+                    <span>Allowed</span>
+                </div>
+                <div class="category-item">
+                    <strong>SMG Category</strong>
+                    <span>None allowed</span>
+                </div>
+                <div class="category-item">
+                    <strong>AK Series</strong>
+                    <span>Host discretion</span>
+                </div>
+                <div class="category-item">
+                    <strong>Shotguns</strong>
+                    Pump & Sawed Off only
+                </div>
+                <div class="category-item">
+                    <strong>Sniper</strong>
+                    Not allowed
+                </div>
+                <div class="category-item">
+                    <strong>Explosives</strong>
+                    <span>Not allowed</span>
+                </div>
+                <div class="category-item">
+                    <strong>Minigun</strong>
+                    <span>Not allowed</span>
+                </div>
+                <div class="category-item">
+                    <strong>Special Ammo</strong>
+                    Not allowed (Mk 2 fine)
+                </div>
+            </div>
+            <div class="host-note">
+                <div><strong>Civs:</strong> Jerry can & Molotov only</div>
+                <div><strong>Cops:</strong> Jerry can & Tear gas only</div>
+            </div>
+            <div class="weapons-rules">
+                <ul class="rule-list">
+                    <li>All weapons must be purchased from <span>Gun Store</span> or <span>Gun Dealer</span></li>
+                    <li>Illegal guns = guns with serial number removed</li>
+                    <li>ALL sales must be announced in <span>party chat</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+                </div>
+                <h2 class="section-title">Vehicles</h2>
+            </div>
+            <div class="category-grid">
+                <div class="category-item">
+                    <strong>Prohibited</strong>
+                    HSW, Modded, Armoured, Weaponised
+                </div>
+                <div class="category-item">
+                    <strong>Prohibited</strong>
+                    Arena War or War Stock
+                </div>
+                <div class="category-item">
+                    <strong>Prohibited</strong>
+                    Super or High End Sport
+                </div>
+                <div class="category-item">
+                    <strong>Prohibited</strong>
+                    Corvettes or Trophy Trucks
+                </div>
+                <div class="category-item">
+                    <strong>Prohibited</strong>
+                    Bullet Proof tires/windows
+                </div>
+
+                <div class="category-item">
+                    <strong>Aircraft</strong>
+                    Host approval required
+                </div>
+            </div>
+        </div>
+
+        <div class="two-cols">
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.31.06-.63.06-.94 0-.31-.02-.63-.06-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.04.31-.06.63-.06.94s.02.63.06.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58z"/></svg>
+                    </div>
+                    <h2 class="section-title">Factors</h2>
+                </div>
+                <div class="factors-grid small">
+                    <div class="factor-item"><span class="name">Fear</span><span class="status">ON</span></div>
+                    <div class="factor-item"><span class="name">Gas</span><span class="status">PD Chases</span></div>
+                    <div class="factor-item"><span class="name">Suspension</span><span class="status">ON</span></div>
+                    <div class="factor-item"><span class="name">Blood</span><span class="status">ON</span></div>
+                    <div class="factor-item"><span class="name">Crash</span><span class="status">ON</span></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-header">
+                    <div class="section-icon">
+                        <svg viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99z"/></svg>
+                    </div>
+                    <h2 class="section-title">Pullover Rule</h2>
+                </div>
+                <ul class="rule-list compact">
+                    <li><span>2 pullovers</span> before reason to run</li>
+                    <li><span>15 mins</span> to run from cops</li>
+                    <li><span>+5 mins</span> if you get cash</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="final-notice">
+            <h3>Final Reminder</h3>
+            <p>These sessions are for fun, fair, and story-driven RP.<br>
+            If you cannot follow the rules, you will be kicked and banned from future RPs.<br>
+            Keep it creative and keep it respectful.</p>
+            <p style="margin-top: 16px; color: var(--accent);"><strong>5 min grace period</strong> for starting</p>
+        </div>
+
+        <div class="join-grid">
+            <div class="join-card civ">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                <h4>CIVILIANS</h4>
+                <p>Game Chat</p>
+            </div>
+            <div class="join-card cop">
+                <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+                <h4>COPS</h4>
+                <p>Police Station</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
